@@ -6,10 +6,11 @@ import time
 import RPi.GPIO as GPIO
 from twelve_led_on_off import led_on
 from twelve_led_on_off import led_off
+from twelve_led_on_off import light_num
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-all_led = 12
+all_led = len(light_num)
 try:
   ltime = float(argv[1])
   repeat_time = int(argv[2])
