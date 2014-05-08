@@ -1,0 +1,33 @@
+function gpclear()
+ { for gpport in `seq 17 20`;
+   do 
+    gpio mode $gpport out; 
+    gpio write $gpport 0
+    gpio mode $gpport in; 
+ done;
+ }
+
+AR0="18  17  19  20" 
+AR1="17  18  19  20" 
+AR2="19  17  18  20" 
+AR3="17  19  18  20" 
+AR4="20  17  19  18" 
+AR5="17  20  19  18" 
+AR6="19  18  17  20" 
+AR7="18  19  17  20" 
+AR8="19  20  17  18" 
+AR9="20  19  17  18" 
+AR10="18  20  19  17" 
+AR11="20  18  19  17"
+
+function gplight()
+  { 
+    gpio mode $3 in;
+    gpio mode $4 in;
+    gpio mode $2 out;
+    gpio write $2 0;
+    gpio mode $1 out;
+    gpio write $1 1;
+  }
+
+# for x in `seq 0 11`; do gplight `eval echo \\$AR$x`; sleep 2; gpclear ;done
