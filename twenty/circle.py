@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# led one to another 
+# first parameter is led on time
+# second parameter is times of led cycle
+# when second parameter is less than 0;
+# circle reversed
+
 from sys import argv
 import time
 import RPi.GPIO as GPIO
@@ -16,10 +22,16 @@ try:
   repeat_time = int(argv[2])
 except:
   ltime = 0.05
-  repeat_time = 10
+  repeat_time = 5
+
+if repeat_time < 0:
+  cont = -1
+  repeat_time = abs(repeat_time)
+else:
+  cont = 1
 
 for i in range(repeat_time):
-  for led in range(all_led):
+  for led in range(all_led)[::cont]:
     led_on(led)
     time.sleep(ltime)
     led_off(led)

@@ -23,20 +23,7 @@ leds = [
 [p2, p4], [p2, p1], 
 [p1, p2], [p2, p3], 
 [p3, p2], [p4, p2]] 
-"""
-leds = [
-  [p3, p0], [p0, p3],
-  [p4, p0], [p0, p4],
-  [p1, p0], [p0, p1],
-  [p2, p1], [p1, p2],
-  [p2, p0], [p0, p2],
-  [p3, p1], [p1, p3],
-  [p4, p1], [p1, p4],
-  [p4, p2], [p2, p4],
-  [p3, p2], [p2, p3],
-  [p4, p3], [p3, p4]
-  ]
-"""
+
 def led_on(num):
   led = leds[num] 
   GPIO.setup(led[0], GPIO.OUT)
@@ -45,7 +32,7 @@ def led_on(num):
 
 def led_off(num):
   led = leds[num] 
+  GPIO.setup(led[0], GPIO.OUT)
   GPIO.output(led[0], GPIO.LOW)
   GPIO.setup(led[0], GPIO.IN)
   GPIO.setup(led[1], GPIO.IN)
-

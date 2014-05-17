@@ -19,7 +19,7 @@ try:
   repeat_time = int(argv[2])
 except:
   ltime = 0.0005
-  repeat_time = 30
+  repeat_time = 10
 
 odd = light_num[0::2]
 even = light_num[1::2]
