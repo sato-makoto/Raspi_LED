@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# check GPIO 28 and 31
+# Check from GPIO 28 to 31
 # when GPIO is False
-# print button pressed
-# It will check both GPIO
-# for future.
-
+# print messages of button 
+# pressed
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
