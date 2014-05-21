@@ -44,6 +44,7 @@ GPIO.setup(input_ports[1], GPIO.OUT)
 GPIO.setup(input_ports[2], GPIO.IN)
 GPIO.output(input_ports[1], GPIO.HIGH)
 inputwait = 50000
+ratio = 1.5
 
 for i in range(repeat_time):
   for led in range(all_led)[::cont]:
@@ -54,13 +55,13 @@ for i in range(repeat_time):
         check = input_check(port)
         if check == False:
           if port == input_ports[0]:
-            inputwait /= 2
+            inputwait = int(inputwait / ratio)
           elif port == input_ports[2]:
-            inputwait *= 2
+            inputwait = int(inputwait * ratio)
           while check == False:
             check = input_check(port)
     led_off(led)
     led_end = time.time()
-    print "led lights", round(led_end - led_begin, 2), "seconds."
+    print "led wait is", inputwait, " and led lights", round(led_end - led_begin, 2), "seconds."
 
 GPIO.cleanup()
