@@ -36,3 +36,19 @@ def led_off(num):
   GPIO.output(led[0], GPIO.LOW)
   GPIO.setup(led[0], GPIO.IN)
   GPIO.setup(led[1], GPIO.IN)
+
+# not tested new functions, below
+
+def for_back(repeat_time):
+  if isdigit(repeat_time):
+    if repeat_time < 0:
+      cont = -1
+      repeat_time = abs(repeat_time)
+    else: cont = 1
+  else: exit(1)
+  return (repeat_time, cont)
+    
+def input_check(port):
+  button = GPIO.input(port)
+  return (button)
+
