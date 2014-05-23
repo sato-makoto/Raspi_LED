@@ -52,3 +52,28 @@ def input_check(port):
   button = GPIO.input(port)
   return (button)
 
+# move led
+def move_upper(led):
+   if led % 5:
+     return led - 1
+   else:
+      return led
+#     return led + 4
+def move_lower(led):
+   if (led + 1) % 5: 
+     return led + 1
+   else: 
+      return led
+#     return led - 4
+def move_left(led):
+   if led > 14:
+#     return led - 15
+      return led
+   else:
+    return led + 5
+def move_right(led):
+   if led < 5:
+#     return led + 15
+      return led
+   else:
+    return led - 5
