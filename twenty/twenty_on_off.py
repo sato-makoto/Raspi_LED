@@ -50,6 +50,9 @@ def for_back(repeat_time):
     
 def input_check(port):
   button = GPIO.input(port)
+# wait to prevent chattering
+  wait = 0.005
+  sleep(wait)
   return (button)
 
 # move led
