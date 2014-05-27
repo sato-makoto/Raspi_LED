@@ -6,12 +6,17 @@
 # print messages of button 
 # pressed
 
+from time import sleep
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+# prevent cattering?
+wait = 0.01
+
 def input_check(port):
   button = GPIO.input(port)
+  sleep(wait)
   return (button, port)
 
 esc = [31, 37, 33, 30]
