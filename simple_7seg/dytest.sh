@@ -7,18 +7,33 @@ second=17
 a=0; b=1; c=2; d=3; e=4; f=5; g=6; h=7
 left="$b $d $f $g"
 right="$b $f $g $h"
+common="$b $d $f $g $h"
+diff1=$d
+diff2=$h
 
-gpio mode $first out
-gpio mode $second out
+gpio reset
+
+for x in $first $second
+do
+  gpio mode $x out
+  gpio write $x 1
+  gpio mode $x in
+done
+
+for y in $common
+  do gpio mode $y out
+done
 
 for times in `seq 100`
 do
-  gpio write  $first 1
-  for z in $left; do gpio mode $z out; done
-  for z in $left; do gpio mode $z in; done
-  gpio write $first 0
-  gpio write $second 1
-  for z in $right; do gpio mode $z out; done
-  for z in $right; do gpio mode $z in; done
-  gpio write $second 0
+  gpio mode $diff2 in
+  gpio mode $diff1 out
+  gpio mode $first out
+  gpio mode $first in
+  gpio mode $diff1 in
+  gpio mode $diff2 out
+  gpio mode $second out
+  gpio mode $second in
 done
+
+gpio reset
