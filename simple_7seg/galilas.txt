@@ -1,0 +1,34 @@
+# GPIO and 7 segment LED align
+
+a=0; b=1; c=2; d=3; e=4; f=5; g=6; h=7 
+
+all_led="$a $b $c $d $e $f $g $h"
+led_array=( \
+"$a $b $e $f $g $h" \
+"$f $g" \
+"$a $d $e $g $h" \
+"$d $e $f $g $h" \
+"$b $d $f $g" \
+"$b $d $e $f $h" \
+"$a $b $d $e $f $h" \
+"$b $f $g $h" \
+"$a $b $d $e $f $g $h" \
+"$b $d $e $f $g $h" \
+)
+
+alias gall='gpio readall'
+alias gres='gpio reset'
+allwp="$a $b $c $d $e"
+ 
+function gout()
+  { command gpio mode $1 out ;}
+function gin()
+  { command gpio mode $1 in ;}
+function ghigh()
+  { gout $1 && command gpio write $1 1;}
+function glow()
+  { gout $1 && command gpio write $1 0;} 
+function gnum()
+  { \
+    for y in `echo $all_led` ; do  gin $y; done && \
+    for x in `echo ${led_array[$1]}` ; do gout $x; done ; }
