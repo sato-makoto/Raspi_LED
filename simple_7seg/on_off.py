@@ -36,3 +36,12 @@ def led_off(num, rf):
     GPIO.setup(x, GPIO.IN)
   GPIO.output(rf, GPIO.LOW)
   GPIO.setup(rf, GPIO.IN)
+
+def for_back(repeat_time):
+  if repeat_time < 0:
+    cont = -1
+    repeat_time = abs(repeat_time)
+  else: 
+    cont = 1
+  return (repeat_time, cont)
+
