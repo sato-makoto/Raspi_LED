@@ -15,12 +15,14 @@ except:
   ltime = 0.5
   repeat_time = 2
 
+repeat_time, cont = on_off.for_back(repeat_time)
+
 swaptime = 0.001
 number = 0
 allnum = 100
 light_led = []
 for x in range(repeat_time):
-   for y in range(allnum):
+   for y in range(allnum)[::cont]:
      light_led = on_off.right_left(y)
      btime = time()
      etime = 0
