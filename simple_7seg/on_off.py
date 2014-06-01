@@ -33,6 +33,6 @@ def led_on(num, rf):
 
 def led_off(num, rf):
   for x in led_array[num]:
-    GPIO.setup(x, GPIO.OUT)
+    GPIO.setup(x, GPIO.IN)
   GPIO.output(rf, GPIO.LOW)
   GPIO.setup(rf, GPIO.IN)
