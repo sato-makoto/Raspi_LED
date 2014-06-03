@@ -10,7 +10,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 try:
-  ltime = float(argv[1])
+  ltime = abs(float(argv[1]))
   repeat_time = int(argv[2])
 except:
   ltime = 0.05
