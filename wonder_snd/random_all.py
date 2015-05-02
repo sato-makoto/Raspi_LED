@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from sys import argv 
-import time
-import random
-import RPi.GPIO as GPIO
+from time import sleep
+from  random import seed, shuffle, random
+
+from port_pin_on_off import on, off, clean, plist
+# import RPi.GPIO as GPIO
 
 try:
   roundtime = int(argv[1])
@@ -12,18 +14,17 @@ except:
   print "How many time?"
   exit(1)
 
-GPIO.setmode(GPIO.BCM)
+# GPIO.setmode(GPIO.BCM)
 
+shuffle_list = [1,2,3,4,5,6]
 for i in range(roundtime):
-  ports = [17, 18, 22, 23, 24, 27]
-  random.seed()
-  random.shuffle(ports)
-  for port in ports:
-    GPIO.setup(port, GPIO.OUT)
-    GPIO.output(port, GPIO.HIGH)
-    roundsectime = random.random() * 0.5
-    print(port, round(roundsectime, 2))
-    time.sleep(roundsectime)
-    GPIO.output(port ,GPIO.LOW)
+  seed()
+  shuffle(shuffle_list)
+  for port in shuffle_list:
+    on(port)
+    roundsectime = random() * 5
+    print(port,  round(roundsectime, 2))
+    sleep(roundsectime)
+    off(port)
 
-GPIO.cleanup()
+clean()
