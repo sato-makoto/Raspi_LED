@@ -8,7 +8,6 @@ import RPi.GPIO as GPIO
 
 try:
   roundtime = int(argv[1])
-  roundsectime = float(argv[2])
 except:
   print "How many time?"
   exit(1)
@@ -22,6 +21,8 @@ for i in range(roundtime):
   for port in ports:
     GPIO.setup(port, GPIO.OUT)
     GPIO.output(port, GPIO.HIGH)
+    roundsectime = random.random() * 0.5
+    print(port, round(roundsectime, 2))
     time.sleep(roundsectime)
     GPIO.output(port ,GPIO.LOW)
 
