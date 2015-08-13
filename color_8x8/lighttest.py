@@ -14,6 +14,7 @@ except:
 sleeptime = 3
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 p_port = 12
 g_port = 17
