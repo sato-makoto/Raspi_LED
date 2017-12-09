@@ -23,7 +23,9 @@ esc = [31, 37, 33, 30]
 seq_begin = '\033[1;'
 seq_end = '\033[00m'
 
-ports = [28, 29, 30, 31]
+# BCM Number
+# ports = [28, 29, 30, 31]
+ports = [5, 6, 12, 13]
 for port in ports:
   GPIO.setup(port, GPIO.IN)
 
